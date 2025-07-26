@@ -1,6 +1,9 @@
 # **Project10X: Java**
 
-A structured, hands-on journey through 10 Java projects designed to deeply master **Object-Oriented Programming (OOP)**, clean architecture, and backend-focused problem solving — the Java way.
+*A backend-focused 10-project series to master Java OOP fundamentals through real-world systems — part of the Project10X learning method.*
+
+> **Academic Context**: This project series is part of the formal curriculum for **CSOP101 – Object-Oriented Programming**.
+
 
 ---
 
