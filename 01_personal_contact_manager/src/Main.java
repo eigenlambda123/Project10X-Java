@@ -44,16 +44,16 @@ public class Main {
                         }
                     }
                     break;
-                    
+
                 case "3":
                     System.out.println("Exiting Contact Manager...");
                     running = false;
                     break;
+
                 default:
                     System.out.println("Invalid option. Please try again.");
             }
         }
-
         scanner.close();
     }
 }
