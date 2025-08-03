@@ -66,6 +66,11 @@ public class Main {
 
                 default:
                     System.out.println("Invalid option. Please try again.");
+
+                case "4":
+                    contactManager.saveContactsToFile("contacts.txt");
+                    running = false;
+                    break;
             }
         }
         scanner.close();

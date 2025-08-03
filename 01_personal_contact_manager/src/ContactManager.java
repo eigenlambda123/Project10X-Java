@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,6 @@ public class ContactManager {
     // Return all contacts
     public List<Contact> getAllContacts() {
         return new ArrayList<>(contacts); // Return a copy to prevent external modification
-
     }
 
     // Search by name
@@ -30,4 +30,30 @@ public class ContactManager {
         return null;
     }
 
+    // Save contacts to file
+    public void saveContactsToFile(String filename) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
+            for (Contact contact : contacts) {
+                writer.println(contact.getName() + "," + contact.getPhone() + "," + contact.getEmail());
+            }
+        } catch (IOException e) {
+            System.out.println("Error saving contacts: " + e.getMessage());
+        }
+    }
+
+    // Load contacts from file
+    public void loadContactsFromFile(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 3) {
+                    Contact contact = new Contact(parts[0], parts[1], parts[2]);
+                    contacts.add(contact);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error loading contacts: " + e.getMessage());
+        }
+    }
 }
