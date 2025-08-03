@@ -20,15 +20,14 @@ public class ContactManager {
 
     }
 
-    // Optional: Search by name
-    public List<Contact> searchByName(String name) {
-        List<Contact> results = new ArrayList<>();
+    // Search by name
+    public Contact searchByName(String name) {
         for (Contact contact : contacts) {
-            if (contact.getName().toLowerCase().contains(name.toLowerCase())) {
-                results.add(contact);
+            if (contact.getName().equalsIgnoreCase(name)) {
+                return contact;
             }
         }
-        return results;
+        return null;
     }
 
 }

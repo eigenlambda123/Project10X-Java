@@ -1,11 +1,13 @@
 import java.util.Scanner;
 import java.util.List;
 
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ContactManager manager = new ContactManager(); // Acess Contact Manager
         boolean running = true;
+        contactManager.loadContactsFromFile("contacts.txt");
 
         while (running) {
             System.out.println("\nPersonal Contact Manager:");
@@ -47,6 +49,17 @@ public class Main {
                     break;
 
                 case "3":
+                    System.out.print("Enter name to search: ");
+                    String name = scanner.nextLine();
+                    Contact result = contactManager.searchByName(name);
+                    if (result != null) {
+                        System.out.println("Found: " + result);
+                    } else {
+                        System.out.println("No contact found with that name.");
+                    }
+                    break;
+
+                case "5":
                     System.out.println("Exiting Contact Manager...");
                     running = false;
                     break;
