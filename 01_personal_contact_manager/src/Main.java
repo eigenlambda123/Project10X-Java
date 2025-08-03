@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        ContactManager manager = new ContactManager(); // Acess Contact Manager
         boolean running = true;
 
         while (running) {
@@ -17,9 +18,19 @@ public class Main {
 
             switch (input) {
                 case "1":
-                    System.out.println("Add Contact selected.");
-                    // TODO: Add contact logic
+                    // Inputs
+                    System.out.print("Enter name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Enter phone: ");
+                    String phone = scanner.nextLine();
+                    System.out.print("Enter email: ");
+                    String email = scanner.nextLine();
+
+                    Contact contact = new Contact(name, phone, email); // Instantiate new Contact
+                    manager.addContact(contact);  // Add the data in the contact
+                    System.out.println("Contact added successfully.");
                     break;
+
                 case "2":
                     System.out.println("View All Contacts selected.");
                     // TODO: View contact logic
