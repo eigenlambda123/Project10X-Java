@@ -6,14 +6,16 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ContactManager manager = new ContactManager(); // Acess Contact Manager
+        manager.loadContactsFromFile("contacts.txt");   // Load contacts on startup
+
         boolean running = true;
-        contactManager.loadContactsFromFile("contacts.txt");
 
         while (running) {
             System.out.println("\nPersonal Contact Manager:");
             System.out.println("[1] Add Contact");
             System.out.println("[2] View All Contacts");
-            System.out.println("[3] Exit");
+            System.out.println("[3] Search Contact by Name");
+            System.out.println("[4] Exit and Save");
             System.out.print("Select an option: ");
 
             // Input Placeholder
@@ -49,9 +51,10 @@ public class Main {
                     break;
 
                 case "3":
+                    // Search Name
                     System.out.print("Enter name to search: ");
-                    String name = scanner.nextLine();
-                    Contact result = contactManager.searchByName(name);
+                    String searchName = scanner.nextLine();
+                    Contact result = manager.searchByName(searchName);
                     if (result != null) {
                         System.out.println("Found: " + result);
                     } else {
@@ -59,18 +62,16 @@ public class Main {
                     }
                     break;
 
-                case "5":
-                    System.out.println("Exiting Contact Manager...");
+                case "4":
+                    // Save and Exit
+                    manager.saveContactsToFile("contacts.txt");
+                    System.out.println("Contacts saved. Goodbye!");
                     running = false;
                     break;
 
                 default:
                     System.out.println("Invalid option. Please try again.");
 
-                case "4":
-                    contactManager.saveContactsToFile("contacts.txt");
-                    running = false;
-                    break;
             }
         }
         scanner.close();
