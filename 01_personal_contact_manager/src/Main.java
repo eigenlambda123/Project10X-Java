@@ -32,9 +32,19 @@ public class Main {
                     break;
 
                 case "2":
-                    System.out.println("View All Contacts selected.");
-                    // TODO: View contact logic
+                    // List of Contact
+                    List<Contact> contacts = manager.getAllContacts();
+                    if (contacts.isEmpty()) {
+                        System.out.println("No contacts found.");
+                    } else {
+                        System.out.println("\n--- Contact List ---");
+                        for (Contact c : contacts) {
+                            System.out.println(c);
+                            System.out.println("--------------------");
+                        }
+                    }
                     break;
+                    
                 case "3":
                     System.out.println("Exiting Contact Manager...");
                     running = false;
