@@ -11,7 +11,7 @@ public class Main {
             System.out.println("[2] View All Contacts");
             System.out.println("[3] Exit");
             System.out.print("Select an option: ");
-            
+
             // Input Placeholder
             String input = scanner.nextLine();
 
